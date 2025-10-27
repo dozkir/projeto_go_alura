@@ -54,4 +54,4 @@ services:
       done;
       echo 'Postgres pronto!';
       go test -v main_test.go
-    "
+      "
