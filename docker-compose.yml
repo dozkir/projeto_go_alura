@@ -9,7 +9,6 @@ services:
       - ./postgres-data:/var/lib/postgresql/data
     ports:
       - 5432:5432
-    command: postgres -c listen_addresses='*'  # aceita conexões externas
 
   app:
     image: golang:1.22
