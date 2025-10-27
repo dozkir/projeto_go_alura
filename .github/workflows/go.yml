@@ -27,7 +27,7 @@ jobs:
     - name: Espera o Postgres ficar pronto
       run: |
         echo "Aguardando Postgres iniciar..."
-        until docker compose exec -T postgres pg_isready -U root; do
+        until pg_isready -h localhost -p 5432 -U root; do
           echo "Ainda não está pronto..."
           sleep 2
         done
