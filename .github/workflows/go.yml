@@ -36,10 +36,11 @@ jobs:
         DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
         DB_NAME: ${{ secrets.DB_NAME }}
         DB_PORT: ${{ secrets.DB_PORT }}
-      run: docker compose run --rm \
-            -e DB_USER=$DB_USER \
-            -e DB_PASSWORD=$DB_PASSWORD \
-            -e DB_NAME=$DB_NAME \
-            -e DB_PORT=$DB_PORT \
-            test
+      run: |
+        docker compose run --rm \
+          -e DB_USER=$DB_USER \
+          -e DB_PASSWORD=$DB_PASSWORD \
+          -e DB_NAME=$DB_NAME \
+          -e DB_PORT=$DB_PORT \
+          test
 
