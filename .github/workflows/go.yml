@@ -24,15 +24,6 @@ jobs:
     - name: Inicia banco
       run: docker compose up -d postgres
 
-    - name: Aguardando postgres ficar disponível
-      run: |
-        echo "Aguardando Postgres iniciar..."
-        until docker compose exec postgres pg_isready -U root; do
-          echo "Ainda não está pronto..."
-          sleep 2
-        done
-        echo "Postgres pronto!"
-
     - name: golangci-lint
       uses: golangci/golangci-lint-action@v8
       with:

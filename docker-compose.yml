@@ -45,3 +45,12 @@ services:
       DB_PASSWORD: ""
       DB_NAME: ""
       DB_PORT: ""
+    command: >
+      /bin/sh -c "
+      echo 'Aguardando Postgres...';
+      until pg_isready -h \$DB_HOST -U \$DB_USER; do
+        sleep 2;
+      done;
+      echo 'Postgres pronto!';
+      go test -v main_test.go
+      "
