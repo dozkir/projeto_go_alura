@@ -41,10 +41,10 @@ services:
       - postgres
     environment:
       DB_HOST: postgres
-    DB_USER: ${DB_USER}
-    DB_PASSWORD: ${DB_PASSWORD}
-    DB_NAME: ${DB_NAME}
-    DB_PORT: ${DB_PORT}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
+      DB_PORT: ${DB_PORT}
     command: >
       /bin/sh -c "
       echo 'Aguardando Postgres...';
