@@ -49,9 +49,9 @@ services:
       /bin/sh -c "
       apt-get update && apt-get install -y postgresql-client;
       echo 'Aguardando Postgres...';
-      until pg_isready -h \$DB_HOST -U \$DB_USER; do
+      until pg_isready -h \$DB_HOST -p \$DB_PORT; do
         sleep 2;
       done;
       echo 'Postgres pronto!';
       go test -v main_test.go
-      "
+    "
