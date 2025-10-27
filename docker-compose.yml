@@ -47,6 +47,7 @@ services:
       DB_PORT: ${DB_PORT}
     command: >
       /bin/sh -c "
+      apt-get update && apt-get install -y postgresql-client;
       echo 'Aguardando Postgres...';
       until pg_isready -h \$DB_HOST -U \$DB_USER; do
         sleep 2;
