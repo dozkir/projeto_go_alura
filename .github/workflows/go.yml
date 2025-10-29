@@ -36,7 +36,7 @@ jobs:
     - name: Build project
       run: go build main.go
     
-    - name: Projeto compilado
+    - name: Upload compiled binary
       uses: actions/upload-artifact@v4
       with:
         name: projeto-go-compilado
