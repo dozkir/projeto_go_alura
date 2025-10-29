@@ -1,12 +1,15 @@
 services:
   postgres:
     image: postgres:17
+    container_name: postgres17-container
     environment:
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=root
       - POSTGRES_DB=root
     volumes:
       - ./postgres-data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
 
   app:
     image: golang:1.22
@@ -27,3 +30,24 @@ services:
       - DB_PASSWORD=root
       - DB_NAME=root
       - DB_PORT=5432
+
+  test:
+    image: golang:1.22
+    working_dir: /app
+    volumes:
+      - ./:/app
+    depends_on:
+      - postgres
+    environment:
+      DB_HOST: postgres
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
+      DB_PORT: ${DB_PORT}
+    command: >
+      /bin/sh -c "
+      echo 'Esperando Postgres iniciar...';
+      sleep 20;
+      echo 'Postgres pronto!';
+      go test -v main_test.go
+      "
