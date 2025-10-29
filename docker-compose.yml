@@ -1,6 +1,7 @@
 services:
   postgres:
     image: postgres:17
+    container_name: postgres17-container
     environment:
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=root
@@ -9,8 +10,6 @@ services:
       - ./postgres-data:/var/lib/postgresql/data
     ports:
       - 5432:5432
-    command: postgres -c listen_addresses='*'
-
 
   app:
     image: golang:1.22
